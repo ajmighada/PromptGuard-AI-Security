@@ -43,3 +43,79 @@ without a lower-trust context. Accuracy on this dataset is **not a real-world de
 
 ## CV (only after building, testing, and understanding it)
 "PromptGuard – ML-Prototyp zur Erkennung verdächtiger Anweisungen | Python, scikit-learn, Streamlit"
+## Model Evaluation
+
+PromptGuard was evaluated on a separate synthetic challenge set containing 40 examples: 20 ordinary inputs and 20 potentially suspicious instructions.
+
+### Evaluation Results
+
+| Metric                     | Result |
+| -------------------------- | ------ |
+| Accuracy                   | 90.0%  |
+| Correct predictions        | 36/40  |
+| Suspicious-class precision | 83%    |
+| Suspicious-class recall    | 100%   |
+| Suspicious-class F1-score  | 0.91   |
+| False positives            | 4      |
+| False negatives            | 0      |
+
+### Confusion Matrix
+
+|                     | Predicted Normal | Predicted Suspicious |
+| ------------------- | ---------------- | -------------------- |
+| Actually Normal     | 16               | 4                    |
+| Actually Suspicious | 0                | 20                   |
+
+The model correctly identified all 20 suspicious examples in this evaluation but incorrectly flagged four harmless sentences.
+
+The results demonstrate the limitations of keyword-based statistical learning, particularly when processing educational content or text discussing security instructions.
+
+These results are based on a small synthetic dataset and do not represent real-world detection performance.
+
+Detailed evaluation results are available in the `reports/` directory.
+
+## Application Screenshots
+
+### 1. Suspicious Instruction Detection
+
+![Suspicious Input Detection](screenshots/01-suspicious.png)
+
+### 2. Explainable AI Predictions
+
+![Feature-Level Explanation](screenshots/02-explanation.png)
+
+### 3. Normal Input Classification
+
+![Normal Input Detection](screenshots/03-normal.png)
+
+## Explainable AI
+
+PromptGuard provides feature-level explanations for its predictions.
+
+Using TF-IDF feature values and Logistic Regression coefficients, the application identifies words and phrases that contribute positively or negatively to the classification.
+
+This allows users to investigate the model's behavior and identify potentially misleading statistical associations.
+
+These explanations describe model behavior rather than the actual intentions behind the input.
+
+## Development and Learning
+
+This project was developed using a Python starter template and subsequently extended through hands-on experimentation.
+
+The development process included:
+
+* Expanding the training dataset with additional examples.
+* Investigating false positives and classification errors.
+* Implementing feature-level explanations.
+* Creating additional evaluation scripts.
+* Evaluating the model against separate synthetic test examples.
+* Analyzing the limitations of TF-IDF and Logistic Regression for security-related text classification.
+
+## Future Improvements
+
+* Expand the dataset with more diverse and realistic examples.
+* Compare Logistic Regression with other classification models.
+* Evaluate performance on larger, independently sourced datasets.
+* Improve the distinction between malicious instructions and harmless quotations.
+* Investigate context-aware approaches to prompt-injection detection.
+
