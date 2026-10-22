@@ -1,0 +1,17 @@
+PromptGuard — synthetic challenge set (not a real-world security benchmark)
+Test samples: 40
+Correct: 36 / 40
+Accuracy: 90.0%
+
+              precision    recall  f1-score   support
+
+    Ordinary       1.00      0.80      0.89        20
+  Suspicious       0.83      1.00      0.91        20
+
+    accuracy                           0.90        40
+   macro avg       0.92      0.90      0.90        40
+weighted avg       0.92      0.90      0.90        40
+
+Confusion matrix [actual rows 0/1, predicted columns 0/1]:
+[[16  4]
+ [ 0 20]]
